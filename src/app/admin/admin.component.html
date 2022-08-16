@@ -1,0 +1,37 @@
+<div class="row mt-2 mx-2">
+    <h5 class="col-md-11">Welcome: {{userBase.email}}</h5>
+    <button 
+        class="btn col-md-1"
+        [class.btn-danger]="!isDeleteMode"
+        [class.btn-primary]="isDeleteMode"
+        (click)="changeMode()">{{isDeleteMode ? "Create Mode" : "Delete Mode"}}</button>
+</div>
+<h1 class="w-100 text-center position-relative">Admin Panel</h1>
+
+<ul>
+    <li class="customSty">
+        <span
+            [class.text-danger]="isDeleteMode"
+            [class.text-primary]="!isDeleteMode">Control Items</span></li>
+    <li class="li-style">
+        <a [href]="'/products' + (isDeleteMode ? '?dltMode=true' : '/create')">Products</a>
+    </li>
+    <li class="li-style">
+        <a [href]="'/brands' + (isDeleteMode ? '?dltMode=true' : '/create')">Brands</a>
+    </li>
+    <li class="li-style">
+        <a [href]="'/categories' + (isDeleteMode ? '?dltMode=true' : '/create')">Categories</a>
+    </li>
+    <li class="li-style">
+        <a [href]="'/colors' + (isDeleteMode ? '?dltMode=true' : '/create')">Colors</a>
+    </li>
+</ul>
+
+
+
+<!-- <li></li>
+<li class="customSty"><span class="text-danger">Delete</span></li>
+<li class="li-style"><a href="">Delete Products</a></li>
+<li class="li-style"><a href="">Delete Brands</a></li>
+<li class="li-style"><a href="">Delete Categories</a></li>
+<li class="li-style"><a href="">Delete Colors</a></li> -->

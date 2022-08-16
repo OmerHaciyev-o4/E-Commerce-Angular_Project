@@ -1,0 +1,50 @@
+.base-style{
+    width: 100%;
+    text-align: justify;
+    border: 0;
+    -webkit-appearance: textfield;
+}
+
+.no-admin-pro-name{
+    background-color: transparent;
+    outline: none;
+    cursor: context-menu;
+}
+
+.no-admin-pro-desc{
+    background-color: transparent;
+    outline: none;
+    cursor: context-menu;
+    resize: none;
+}
+
+.no-admin-pro-price{
+    outline: none;
+    cursor: context-menu;
+    background-color: transparent;
+}
+
+.buttons-style{
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px !important;
+}
+
+.add-to-card-style{
+    border: 1px solid white;
+    background-color: transparent;
+    transition: 0.8s;
+}
+.add-to-card-style:hover{
+    background: white !important;
+    border: 1px solid black;
+    color: black;
+    transition: 0.8s;
+}
+
+.delete-style:hover{
+    background: red !important;
+    border-color: white !important;
+    color: white;
+    transition: 0.8s;
+}

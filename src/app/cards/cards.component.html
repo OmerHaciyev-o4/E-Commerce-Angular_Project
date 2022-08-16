@@ -1,0 +1,62 @@
+<app-preload *ngIf="preload"></app-preload>
+
+<h3 class="w-100 text-center mt-4 text-bold">Orders</h3>
+
+<div class="w-100" *ngIf="isUserCheck">
+    <div class="alert alert-warning">You cannot order. (Admin)</div>
+</div>
+
+<div class="container-fluid my-4 d-flex justify-content-center" *ngIf="!isUserCheck">
+    <div class="card card-1">
+        <div class="card-header bg-white">
+            <div class="media flex-sm-row flex-column-reverse justify-content-between  ">
+                <div class="col my-auto"> <h4 class="mb-0">Welcome to Card Panel: <span class="change-color"> {{ user.email }}</span> .</h4> </div>
+                <div class="col-auto text-center  my-auto pl-0 pt-sm-4"> <img class="img-fluid my-auto align-items-center mb-0 pt-3"  src="../../assets/images/favicon.png" width="115" height="115"> <p class="mb-4 pt-0 Glasses">Watches For Everyone</p>  </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div 
+                *ngFor="let card of cards; let i = index"
+                class="row" 
+                [class.mt-4]="i > 0">
+                <div class="col">
+                    <div class="card card-2">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="sq align-self-center "> 
+                                    <img class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" [src]="card.product.imageUrl" width="135" height="135" /> 
+                                </div>
+                                <div class="media-body my-auto text-right">
+                                    <div class="row my-auto flex-column flex-md-row">
+                                        <div class="col my-auto"> <h6 class="mb-0">{{ card.product.name }}</h6></div>
+                                        <div class="col-auto my-auto"> <small>Color: {{ colors.get(card.product.colorId) }}</small></div>
+                                        <div class="col my-auto"> <small>Price: {{ card.product.price | currency }}</small></div>
+                                        <div class="col my-auto">Count: <input type="number" class="w-50" [(ngModel)]="card.count" (ngModelChange)="productCountChange()"></div>
+                                        <div class="col my-auto"><h6 class="mb-0">{{ card.count * card.product.price | currency}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-3 ">
+                            <div class="row">
+                                <div class="col-md-3 mb-3"><small class="cursor-pointer" (click)="deleteCard(i)"><span><i class="mr-2 fa fa-trash-alt cursor-pointer"></i></span>Delete Order</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="jumbotron-fluid">
+                <div class="row justify-content-between ">
+                    <div class="col-sm-auto col-auto my-auto"><img class="img-fluid my-auto align-self-center rounded" src="../../assets/images/favicon.png" width="115" height="115"></div>
+                    <div class="col-auto my-auto "><h2 class="mb-0 font-weight-bold">Must Be Paid</h2></div>
+                    <div class="col-auto my-auto ml-auto"><h1 class="display-3 ">{{ total | currency}}</h1></div>
+                </div>
+                <div class="row mb-1 mt-5 mt-md-0">
+                    <button class="col-md-6 mx-auto border-0 rounded-pill p-2 text-white text-bold bg-primary letter-spacing-1" (click)="ordering()">Ordering</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

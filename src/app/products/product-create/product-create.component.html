@@ -1,0 +1,152 @@
+<app-preload *ngIf="preload"></app-preload>
+
+<form #productForm="ngForm" *ngIf="!preload" (ngSubmit)="createProduct(productForm)" class="row my-3 mx-4 d-flex flex-column">
+    <!-- <div class="drop-zone col-md-3 mx-auto" id="drop-zone">
+        <span class="drop-zone__prompt">Drop image here or click to upload</span>
+        <input type="file" name="myFile" class="drop-zone__input">
+    </div> -->
+
+    <div 
+        #dropArea
+        class="col-md-3 mx-auto position-relative p-0 mb-5 dropArea"
+        (dragover)="dragOver(dropArea, $event)"
+        (dragleave)="dragLeave(dropArea)"
+        (drop)="dropFile($event, dropArea)"
+        (dragstart)="dragStart($event)"
+        [draggable]="true">
+        <a *ngIf="!url" (click)="openFileDialog()"
+            id="dropLabel"
+            class="position-absolute pointer user-select-none dropLabel">Drop Image Here</a>
+
+        <input type="file" name="imgSelector" id="imgSelector" class="d-none" (change)="onSelect($event)" accept="image/*">
+        <img *ngIf="url" [src]="url" class="position-absolute m-0 rounded-lg dropedImage" (dblclick)="removeFile()">
+    </div>
+
+    <div class="col-md-6 mx-auto mb-3">
+        <label for="proName">Name</label>
+        <input 
+            type="text" 
+            name="name" 
+            id="name" 
+            [(ngModel)]="product.name"
+            class="w-100 outline-none customInputStyle"
+            placeholder="Pleace enter product name.(required)"
+            minlength="1"
+            maxlength="25"
+            required>
+    </div>
+
+    <div class="col-md-6 mx-auto mb-3">
+        <label for="description">Description</label>
+        <input 
+            type="text" 
+            name="description" 
+            id="description"  
+            [(ngModel)]="product.description"
+            class="w-100 p-1 outline-none customInputStyle"
+            placeholder="Pleace enter product description.">
+    </div>
+
+    <div class="col-md-6 mx-auto mb-3">
+        <label for="categoryId" class="d-block">Category</label>
+        <select
+            name="categoryId" 
+            class="w-100 bg-white selectStyle"
+            title="required"
+            [(ngModel)]="product.categoryId"
+            required
+            [title]="'Select Category'">
+            <option *ngFor="let item of categories" [value]="item.id" >{{item.name}}</option>
+        </select>
+    </div>
+    
+    <div class="col-md-6 mx-auto mb-3">
+        <label for="brandId" class="d-block">Brand</label>
+        <select 
+            name="brandId" 
+            class="w-100 bg-white selectStyle"
+            title="required"
+            [(ngModel)]="product.brandId"
+            required
+            [title]="'Select Brand'">
+            <option *ngFor="let item of brands" [value]="item.id" >{{item.name}}</option>
+        </select>
+    </div>
+    
+    <div class="col-md-6 mx-auto mb-3">
+        <label for="colorId" class="d-block">Color</label>
+        <select 
+            name="colorId" 
+            class="w-100 bg-white selectStyle"
+            title="required"
+            [(ngModel)]="product.colorId"
+            required
+            [title]="'Select Color'">
+            <option *ngFor="let item of colors" [value]="item.id" >{{item.name}}</option>
+        </select>
+    </div>
+
+    <div class="col-md-6 mx-auto mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="count">Count</label>
+                <input  
+                    type="number" 
+                    min="1"
+                    value="1" 
+                    name="count" 
+                    id="count" 
+                    [(ngModel)]="product.count"
+                    class="w-100 p-1 mt-0 outline-none customInputStyle"
+                    placeholder="Pleace enter product count.(required)"
+                    required>
+            </div>
+            <div class="col-md-6">
+                <label for="price">Price</label>
+                <input  
+                    type="number" 
+                    min="1" 
+                    value="1" 
+                    name="price" 
+                    id="price" 
+                    [(ngModel)]="product.price"
+                    class="w-100 p-1 mt-0 outline-none customInputStyle"
+                    placeholder="Pleace enter product price.(required)"
+                    required>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-auto mx-auto mb-3">
+        <div class="form-check">
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                id="newItem" 
+                name="newItem"
+                [(ngModel)]="product.newItem"
+                checked>
+            <label class="form-check-label user-select-none" for="newItem">New</label>
+        </div>
+    </div>
+
+    <div class="col-md-auto mx-auto mt-2 mb-4">
+        <button 
+            type="submit"
+            class="btn btn-success" 
+            [disabled]="productForm.invalid">Create Product</button>
+    </div>
+</form>
+
+
+
+<!-- <div class="col-md-3 mx-auto py-1" id="dropzone">
+    <img src="https://wallpapercave.com/wp/wp5806009.jpg" alt="" class="w-100 rounded" style="height: 300px;">
+
+    <ngx-dropzone (change)="onSelect($event)" class="d-flex flex-column">
+        <ngx-dropzone-label>Drop the picture</ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview mx-auto" *ngFor="let f of files" [file]="f"></ngx-dropzone-image-preview>
+    </ngx-dropzone>
+</div> -->
+<!-- <input type="url" name="imgURL" id="imgURL" class="w-75"> -->
+<!-- <input type="file" name="imgselector" id="imgselector"> -->

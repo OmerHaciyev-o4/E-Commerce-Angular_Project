@@ -1,0 +1,15 @@
+<app-preload *ngIf="preload"></app-preload>
+
+<div class="container" *ngIf="!preload">
+    <form #form="ngForm" (ngSubmit)="createBrand()" class="row my-4 d-flex flex-column">
+        <div class="col-md-6 mx-auto mb-3">
+            <label for="name">Brand Name</label>
+            <input type="text" name="name" id="name" class="w-100 outline-none customInputStyle"
+                placeholder="Pleace enter brand name. (required)" minlength="1" maxlength="10" required
+                [(ngModel)]="brand.name">
+        </div>
+        <div class="col-md-auto mx-auto">
+            <button type="submit" class="btn btn-success" [disabled]="form.invalid">Create Brand</button>
+        </div>
+    </form>
+</div>

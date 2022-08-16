@@ -1,0 +1,13 @@
+.vertical {
+    border-left: 2px solid black;
+    height: 1.6rem;
+    margin-left: 15px;
+}
+
+.ytb-hover{
+    transition: 1s;
+}
+
+.ytb-hover:hover{
+    color: red !important;
+}

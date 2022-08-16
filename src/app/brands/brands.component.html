@@ -1,0 +1,40 @@
+<div class="container" *ngIf="!preload">
+    <div class="row my-3">
+        <div class="col-md-12 mx-auto" >
+            <h4>Brands</h4>
+            <ul class="list-group" #parentTag *ngIf="brands && !isDeleteMode">
+                <li
+                    class="list-group-item user-select-none pointer"
+                    #my
+                    [class.active]="displayAll"
+                    [routerLink]="'/products'"
+                    [queryParams]="{ brandId: null }"
+                    [queryParamsHandling]="'merge'"
+                    (click)="selectBrand(); reloadAllComponent()">All Brands
+                </li>
+                <li 
+                    class="list-group-item user-select-none pointer"
+                    *ngFor="let brand of brands" 
+                    [class.active]="!displayAll && selectedBrand.id == brand.id" 
+                    [id]="brand.id"
+                    [routerLink]="'/products'"
+                    [queryParams]="{ brandId: brand.id }"
+                    [queryParamsHandling]="'merge'"
+                    (click)="selectBrand(brand); reloadAllComponent()">{{brand.name}}
+                </li>
+            </ul>
+            <ul class="list-group" #parentTag *ngIf="brands && isDeleteMode">
+                <li
+                    class="list-group-item user-select-none pointer bg-danger text-light"
+                    (click)="allDelete();">All Delete
+                </li>
+                <li 
+                    class="list-group-item user-select-none pointer bg-danger text-light"
+                    *ngFor="let brand of brands" 
+                    [id]="brand.id"
+                    (click)="deleteBrand(brand); reloadAllComponent()">{{brand.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

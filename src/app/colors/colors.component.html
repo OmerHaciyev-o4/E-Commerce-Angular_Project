@@ -1,0 +1,39 @@
+<div class="container" *ngIf="!preload">
+    <div class="row my-3">
+        <div class="col-md-12 mx-auto rounded-pill" >
+            <h4>Colors</h4>
+            <ul class="list-group" *ngIf="colors && !isDeleteMode">
+                <li
+                    class="list-group-item user-select-none pointer"
+                    [class.active]="displayAll"
+                    [routerLink]="'/products'"
+                    [queryParams]="{ colorId: null }"
+                    [queryParamsHandling]="'merge'"
+                    (click)="selectColor(); reloadAllComponent()">All Colors
+                </li>
+                <li 
+                    class="list-group-item user-select-none pointer"
+                    *ngFor="let color of colors" 
+                    [class.active]="!displayAll && selectedColor.id == color.id" 
+                    [id]="color.id"
+                    [routerLink]="'/products'"
+                    [queryParams]="{ colorId: color.id }"
+                    [queryParamsHandling]="'merge'"
+                    (click)="selectColor(color); reloadAllComponent()">{{color.name}}
+                </li>
+            </ul>
+            <ul class="list-group" #parentTag *ngIf="colors && isDeleteMode">
+                <li
+                    class="list-group-item user-select-none pointer bg-danger text-light"
+                    (click)="allDelete();">All Delete
+                </li>
+                <li 
+                    class="list-group-item user-select-none pointer bg-danger text-light"
+                    *ngFor="let color of colors" 
+                    [id]="color.id"
+                    (click)="deleteBrand(color); reloadAllComponent()">{{color.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="hero_area">
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" ><span>E-Commerce</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item" *ngIf="isAuthenticated">
+              <a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
+            </li>
+            <li class="nav-item" *ngIf="isAuthenticated && isRole">
+              <a class="nav-link" routerLink="/admin"> Admin </a>
+            </li>
+            <li class="nav-item" *ngIf="isAuthenticated">
+              <a class="nav-link" href="/">Contact Us</a>
+            </li>
+          </ul>
+          <div class="user_option-box">
+            <a routerLink="/auth" *ngIf="!isAuthenticated">
+              <i class="far fa-user pointer" aria-hidden="true"></i>
+            </a>
+            <a *ngIf="isAuthenticated">
+              <i class="fa fa-user pointer" (click)="OnLogOut()" aria-hidden="true"></i>
+            </a>
+            <a routerLink="/cards" *ngIf="isAuthenticated && !isRole">
+              <i class="fa fa-cart-plus pointer" aria-hidden="true"><span class="badge badge-warning badge-pill" id="cardBadge"></span></i>
+            </a>
+            <!-- <a *ngIf="isAuthenticated">
+              <i class="fa fa-search pointer" aria-hidden="true" onclick="openOrCloseFunc()"></i>
+            </a> -->
+            <div class="vertical"></div>
+            <a href="https://github.com/OmerHaciyev-o4" class="" target="_blank">
+              <i class="fab fa-github ms-2"></i>
+            </a>
+            <a href="https://instagram.com/omer.o4?igshid=YmMyMTA2M2Y=" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UC0VYXNJBSpmoXmbyAA7UrSw" target="_blank">
+              <i class="fab fa-youtube ytb-hover"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>

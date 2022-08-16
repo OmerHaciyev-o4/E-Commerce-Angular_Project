@@ -1,0 +1,41 @@
+<app-preload *ngIf="preload"></app-preload>
+
+<form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="row mt-3">
+        <div class="mb-3 col-md-4 mx-auto">
+            <label for="email" class="form-label">Email</label>
+            <input 
+                class="form-control customInputStyle outline-none"
+                [class.border-red]="err"
+                name="email" 
+                required 
+                email 
+                ngModel 
+                type="email" 
+                id="email" 
+                >
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-4 mx-auto">
+            <label for="password" class="form-label">Password</label>
+            <input 
+                class="form-control customInputStyle outline-none"
+                [class.border-red]="err"
+                name="password" 
+                required 
+                minlength="6" 
+                ngModel 
+                type="password" 
+                id="password">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <a class="w-100 text-center text-primary pointer user-select-none" (click)="onChangeMode()">{{isLoginMode ? 'Create new account ':'Go to login '}}	&#8594;</a>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-auto mx-auto">
+            <button [disabled]="!authForm.valid" class="btn btn-primary mr-3">{{isLoginMode ? 'Login':'Register'}}</button>
+        </div>
+    </div>
+</form>

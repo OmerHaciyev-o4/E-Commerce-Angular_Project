@@ -1,0 +1,94 @@
+.dropArea{
+    width: 30%;
+    min-height: 35vh;
+    border: 3px dashed black;
+    border-radius: 8px;
+    z-index: 0 !important;
+}
+.dropOver{
+    border-style: solid;
+}
+.dropLeave{
+    border-style: dashed;
+}
+
+.dropedImage{
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    z-index: 10 !important;
+}
+
+.dropLabel{
+    font-size: 1.3vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.customeInputStyle{
+    background: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.customeInputStyle:focus{
+    background: black;
+    color: white;
+    border-color: white;
+}
+
+.selectStyle{
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+
+
+
+/* .drop-zone {
+    min-height: 200px;
+    max-height: 250px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #cccccc;
+    border: 4px dashed #009578;
+    border-radius: 10px;
+}
+
+.drop-zone--over {
+    border-style: solid;
+}
+
+.drop-zone__input {
+    display: none;
+}
+  
+
+.drop-zone__thumb {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #cccccc;
+    background-size: cover;
+    position: relative;
+} */
+
+/* .drop-zone__thumb::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 14px;
+    text-align: center;
+} */

@@ -1,0 +1,25 @@
+<app-preload *ngIf="preload"></app-preload>
+
+<div *ngIf="!preload" class="container">
+    <form #form="ngForm" (ngSubmit)="createCategory()" class="row my-4 d-flex flex-column">
+        <div class="col-md-6 mx-auto mb-3">
+            <label for="name">Category Name</label>
+            <input 
+                type="text" 
+                name="name" 
+                id="name"
+                class="w-100 outline-none customInputStyle"
+                placeholder="Pleace enter category name. (required)"
+                minlength="1"
+                maxlength="10"
+                required
+                [(ngModel)]="category.name">
+        </div>
+        <div class="col-md-auto mx-auto">
+            <button 
+                type="submit" 
+                class="btn btn-success"
+                [disabled]="form.invalid">Create Category</button>
+        </div>
+    </form>
+</div>
